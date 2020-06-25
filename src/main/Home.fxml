@@ -1,69 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.web.HTMLEditor?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="main" maxHeight="1.7976931348623157E308"
-            maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="main.Home_Controller">
-    <SplitPane dividerPositions="0.25" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-               prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" minHeight="400.0" minWidth="200.0"
-                    prefHeight="400.0" prefWidth="200.0">
-            <VBox fx:id="section" maxWidth="200.0" prefHeight="400.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0"
-                  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-            <AnchorPane layoutX="140.0" layoutY="339.0" maxHeight="60.0" maxWidth="60.0" prefHeight="60.0"
-                        prefWidth="60.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                <padding>
-                    <Insets bottom="5.0" right="6.0"/>
-                </padding>
-                <MenuButton fx:id="MoreMenu" graphicTextGap="0.0" mnemonicParsing="false" opacity="0.0" popupSide="TOP"
-                            prefHeight="0.0" prefWidth="50.0">
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+
+<AnchorPane fx:id="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Home_Controller">
+    <SplitPane dividerPositions="0.25" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" minHeight="400.0" minWidth="179.0" prefHeight="400.0" prefWidth="179.0">
+            <VBox fx:id="section" maxWidth="200.0" prefHeight="400.0" prefWidth="185.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane layoutX="134.0" layoutY="330.0" maxHeight="60.0" maxWidth="0.0" prefHeight="0.0" prefWidth="60.0" AnchorPane.bottomAnchor="14.800000000000011" AnchorPane.rightAnchor="15.599999999999994">
+                <MenuButton fx:id="MoreMenu" graphicTextGap="0.0" mnemonicParsing="false" opacity="0.0" popupSide="TOP" prefHeight="0.0" prefWidth="50.0">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#add" text="Add Notes"/>
-                        <MenuItem mnemonicParsing="false" onAction="#remove" text="Delete Notes"/>
+                        <MenuItem mnemonicParsing="false" onAction="#add" text="Add Notes" />
+                        <MenuItem mnemonicParsing="false" onAction="#remove" text="Delete Notes" />
                     </items>
                     <font>
-                        <Font size="1.0"/>
+                        <Font size="1.0" />
                     </font>
                 </MenuButton>
-                <Button id="AddButton" fx:id="more" alignment="CENTER_RIGHT" cache="true" contentDisplay="CENTER"
-                        ellipsisString="+" focusTraversable="false" graphicTextGap="0.0" minHeight="50.0"
-                        minWidth="50.0" mnemonicParsing="false" onAction="#ButtonMoreRotate" pickOnBounds="false"
-                        prefHeight="50.0" prefWidth="50.0" stylesheets="@../resources/Style.css" text="+"
-                        textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true"
-                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                        AnchorPane.topAnchor="0.0">
+                <Button id="AddButton" fx:id="more" alignment="CENTER_RIGHT" cache="true" contentDisplay="CENTER" ellipsisString="+" focusTraversable="false" graphicTextGap="0.0" layoutY="2.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#ButtonMoreRotate" pickOnBounds="false" prefHeight="55.0" prefWidth="73.0" stylesheets="@../resources/Style.css" text="+" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
                     <font>
-                        <Font name="Arial Bold" size="55.0"/>
+                        <Font name="Arial Bold" size="55.0" />
                     </font>
                     <padding>
-                        <Insets bottom="4.0" left="-19.0" right="10.0" top="-4.0"/>
+                        <Insets bottom="5.0" left="7.0" right="8.0" top="-6.0" />
                     </padding>
                 </Button>
             </AnchorPane>
-            <ScrollBar layoutX="187.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="13.0"/>
+            <ScrollBar layoutX="186.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="15.0" />
         </AnchorPane>
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-                    minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
-            <HTMLEditor fx:id="HtmlEditor"
-                        htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;"
-                        prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
-            <Button id="SaveButton" mnemonicParsing="false" onMouseClicked="#save" prefHeight="60.0" prefWidth="60.0"
-                    style="-fx-background-radius: 100;" stylesheets="@../resources/Style.css"
-                    AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+            <HTMLEditor fx:id="HtmlEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         <Button fx:id="Tableau" layoutX="489.0" layoutY="6.0" mnemonicParsing="false" onAction="#add_tab" prefHeight="26.0" prefWidth="60.0" text="Tableau" />
+            <Button id="SaveButton" mnemonicParsing="false" onMouseClicked="#save" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;" stylesheets="@../resources/Style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
                 <graphic>
-                    <ImageView fitHeight="54.0" fitWidth="43.0" onMouseClicked="#save" pickOnBounds="true"
-                               preserveRatio="true">
-                        <Image url="@../resources/pictures/Save.jpg"/>
+                    <ImageView fitHeight="54.0" fitWidth="43.0" onMouseClicked="#save" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@../resources/pictures/Save.jpg" />
                     </ImageView>
                 </graphic>
             </Button>

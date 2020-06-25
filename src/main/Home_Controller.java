@@ -141,5 +141,28 @@ public class Home_Controller implements Initializable {
             ButtonMoreStatut = false;
         }
     }
+    //TODO Voir comment ajouter directement un tableau entre les bonnes balise grâce à xml ou html
+    public void add_tab(){
+    //TODO Ajouter un tableau
+    }
 
+    public void delete_tab(){
+      //TODO supprimer un tableau
+    }
+
+    public void add_row(){
+        //TODO ajouter une ligne
+    }
+
+    public void delete_row (){
+        //TODO Supprimer une ligne
+    }
+
+    public void add_column (){
+        //TODO Ajouter une colonne
+    }
+
+    public void delete_column (){
+        //TODO Supprimer une colone
+    }
 }
