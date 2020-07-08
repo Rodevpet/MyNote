@@ -1,24 +1,21 @@
 package main;
 
 import edit.Add_Controller;
-import javafx.animation.RotateTransition;
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.Property;
-import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-import javafx.scene.transform.Transform;
 import javafx.scene.web.HTMLEditor;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -39,13 +36,16 @@ public class Home_Controller implements Initializable {
     Button more;
     @FXML
     HTMLEditor HtmlEditor;
+    @FXML
+    TitledPane Option;
 
-    private String IdNote = "";
+    private Button current;
     private File DirNote = new File("MyNote");
     private boolean ButtonMoreStatut = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        section.layoutYProperty().bind((Bindings.when(Option.expandedProperty()).then(82).otherwise(25)));
         System.out.println(DirNote.getAbsolutePath());
         for (File dur : DirNote.listFiles()) {
             if (dur.isDirectory()) {
@@ -63,14 +63,14 @@ public class Home_Controller implements Initializable {
         }
     }
 
-    public void loadNote(String id, String note) {
-        IdNote = id;
+    public void loadNote(Button current, String note) {
+       this.current = current;
         HtmlEditor.setHtmlText(note);
     }
 
     public void save() throws IOException {
-        if (!IdNote.equals("")) {
-            File sav = new File(DirNote + "/" + IdNote + "/Note.txt");
+        if (!current.getText().equals("")) {
+            File sav = new File(DirNote + "/" + current.getText() + "/Note.txt");
             FileWriter saved = new FileWriter(sav);
             saved.write(HtmlEditor.getHtmlText());
             saved.close();
@@ -106,13 +106,14 @@ public class Home_Controller implements Initializable {
     }
 
     public void remove() {
-        if (!IdNote.equals(null)) {
-            File delete = new File(DirNote + "/" + IdNote);
+        if (current != null) {
+            File delete = new File(DirNote + "/" + current.getText());
             System.out.println(delete.getAbsolutePath());
             for (File sup : Objects.requireNonNull(delete.listFiles())) {
                 sup.delete();
             }
             delete.delete();
+            section.getChildren().remove(current);
         } else {
             Alert exist = new Alert(Alert.AlertType.ERROR);
             exist.setTitle("Erreur");
@@ -120,8 +121,7 @@ public class Home_Controller implements Initializable {
             exist.setContentText("Erreur : Aucune note n'est sélectionner \n Cliquez sur le bouton de la note pour que celle-ci soit supprimer.");
             exist.showAndWait();
         }
-        section.getChildren().remove(IdNote);
-        IdNote = "";
+        current = null;
     }
 
     //TODO Voir comment ajouter directement un tableau entre les bonnes balise grâce à xml ou html

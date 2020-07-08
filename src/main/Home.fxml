@@ -9,57 +9,59 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane fx:id="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Home_Controller">
+<AnchorPane fx:id="main" accessibleRole="NODE" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="850.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Home_Controller">
     <SplitPane dividerPositions="0.25" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="200.0" minHeight="400.0" minWidth="179.0" prefHeight="400.0" prefWidth="179.0">
-            <VBox fx:id="section" layoutY="24.0" maxWidth="200.0" prefHeight="376.0" prefWidth="185.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="24.0" />
-            <ScrollBar layoutX="186.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="15.0" />
-            <AnchorPane layoutX="134.0" layoutY="330.0" maxHeight="60.0" maxWidth="0.0" prefHeight="0.0" prefWidth="60.0" AnchorPane.bottomAnchor="14.800000000000011" AnchorPane.rightAnchor="15.599999999999994" />
-         <TitledPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="185.0" AnchorPane.rightAnchor="16.0">
-            <content>
-               <HBox prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Button id="AddButton" fx:id="more" mnemonicParsing="false" onAction="#add" prefHeight="66.0" prefWidth="62.0" stylesheets="@Fxml/Style.css" text="+" textFill="WHITE" textOverrun="CLIP">
-                        <font>
-                           <Font name="Arial Bold" size="63.0" />
-                        </font>
-                        <padding>
-                           <Insets bottom="-15.0" left="-15.0" right="-15.0" top="-15.0" />
-                        </padding>
-                        <HBox.margin>
-                           <Insets bottom="-10.0" left="-10.0" top="-10.0" />
-                        </HBox.margin>
-                     </Button>
-                     <Button id="DeleteButton" mnemonicParsing="false" onAction="#remove" prefHeight="66.0" prefWidth="62.0" stylesheets="@Fxml/Style.css" text="-" textFill="WHITE" textOverrun="CLIP">
-                        <font>
-                           <Font name="Arial Bold" size="63.0" />
-                        </font>
-                        <padding>
-                           <Insets bottom="-6.0" left="-19.0" right="-15.0" top="-15.0" />
-                        </padding>
-                        <HBox.margin>
-                           <Insets bottom="-10.0" right="-10.0" top="-10.0" />
-                        </HBox.margin>
-                     </Button>
-                        <Button id="SaveButton" mnemonicParsing="false" onMouseClicked="#save" prefHeight="60.0" prefWidth="60.0" stylesheets="@Fxml/Style.css">
-                            <graphic>
-                                <ImageView id="Save" fitHeight="54.0" fitWidth="43.0" onMouseClicked="#save" pickOnBounds="true" preserveRatio="true">
-                                    <Image url="@Fxml/Save.jpg" />
-                                </ImageView>
-                            </graphic>
-                        <HBox.margin>
-                           <Insets bottom="-10.0" left="9.0" right="-10.0" top="-10.0" />
-                        </HBox.margin>
+      <Pane>
+         <children>
+               <ScrollBar layoutX="197.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="6.0" />
+               <VBox fx:id="section" layoutY="25.0" maxWidth="210.0" prefHeight="373.0" prefWidth="198.0" />
+            <TitledPane id="Option" fx:id="Option" accessibleRole="PARENT" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="198.0">
+               <content>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="more" mnemonicParsing="false" onAction="#add" prefHeight="54.0" prefWidth="66.0" style="-fx-background-radius: 0; -fx-background-color: #088A29;" text="+" textFill="WHITE" textOverrun="CLIP">
+                           <font>
+                              <Font name="Arial Bold" size="63.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="-15.0" left="-15.0" right="-15.0" top="-15.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets bottom="-10.0" left="-10.0" top="-10.0" />
+                           </HBox.margin>
                         </Button>
-                  </children>
-               </HBox>
-            </content>
-         </TitledPane>
-        </AnchorPane>
+                        <Button id="DeleteButton" mnemonicParsing="false" onAction="#remove" prefHeight="54.0" prefWidth="65.0" style="-fx-background-color: red; -fx-background-radius: 0;" text="-" textFill="WHITE" textOverrun="CLIP">
+                           <font>
+                              <Font name="Arial Bold" size="63.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="-6.0" left="-19.0" right="-15.0" top="-15.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets bottom="-10.0" right="-10.0" top="-10.0" />
+                           </HBox.margin>
+                        </Button>
+                           <Button mnemonicParsing="false" onMouseClicked="#save" prefHeight="54.0" prefWidth="69.0" style="-fx-background-color: #0174DF; -fx-background-radius: 0;">
+                               <graphic>
+                                   <ImageView id="Save" fitHeight="54.0" fitWidth="43.0" onMouseClicked="#save" pickOnBounds="true" preserveRatio="true">
+                                       <Image url="@Save.jpg" />
+                                   </ImageView>
+                               </graphic>
+                           <HBox.margin>
+                              <Insets bottom="-10.0" left="9.0" right="-10.0" top="-10.0" />
+                           </HBox.margin>
+                           </Button>
+                     </children>
+                  </HBox>
+               </content>
+            </TitledPane>
+         </children>
+      </Pane>
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
             <HTMLEditor fx:id="HtmlEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          <Button fx:id="Tableau" layoutX="489.0" layoutY="6.0" mnemonicParsing="false" onAction="#add_tab" prefHeight="26.0" prefWidth="60.0" text="Tableau" />

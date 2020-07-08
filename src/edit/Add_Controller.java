@@ -14,7 +14,7 @@ public class Add_Controller {
                 "<?import javafx.scene.control.Button?>\n" +
                 "\n" +
                 "\n" +
-                "<Button fx:id=\"button\" mnemonicParsing=\"false\" onAction=\"#load\" prefWidth=\"195.0\" text=\"" + Name + "\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"edit.Controller\" />\n";
+                "<Button fx:id=\"button\" mnemonicParsing=\"false\" style=\"-fx-background-radius : 0;\" onAction=\"#load\" prefWidth=\"195.0\" text=\"" + Name + "\" xmlns=\"http://javafx.com/javafx/8.0.171\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"edit.Controller\" />\n";
         FileWriter containFxml = new FileWriter(directory + "/" + Name + ".fxml");
         containFxml.write(Fxml);
         containFxml.close();
