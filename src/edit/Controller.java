@@ -1,4 +1,4 @@
-package Notes;
+package edit;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +13,6 @@ public class Controller {
 
     public void load() throws IOException {
         Home_Controller load = (Home_Controller) Main.getLoader();
-        load.loadNote(button.getText(), new ResearchNote().researchNote("Notes/" + button.getText() + "/Note.txt"));
+        load.loadNote(button.getText(), new ResearchNote().researchNote("MyNote/" + button.getText() + "/Note.txt"));
     }
 }

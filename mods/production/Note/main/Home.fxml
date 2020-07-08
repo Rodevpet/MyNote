@@ -45,16 +45,6 @@
                            <Insets bottom="-10.0" right="-10.0" top="-10.0" />
                         </HBox.margin>
                      </Button>
-                        <Button id="SaveButton" mnemonicParsing="false" onMouseClicked="#save" prefHeight="60.0" prefWidth="60.0" stylesheets="@Fxml/Style.css">
-                            <graphic>
-                                <ImageView id="Save" fitHeight="54.0" fitWidth="43.0" onMouseClicked="#save" pickOnBounds="true" preserveRatio="true">
-                                    <Image url="@Fxml/Save.jpg" />
-                                </ImageView>
-                            </graphic>
-                        <HBox.margin>
-                           <Insets bottom="-10.0" left="9.0" right="-10.0" top="-10.0" />
-                        </HBox.margin>
-                        </Button>
                   </children>
                </HBox>
             </content>
@@ -63,6 +53,13 @@
         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
             <HTMLEditor fx:id="HtmlEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          <Button fx:id="Tableau" layoutX="489.0" layoutY="6.0" mnemonicParsing="false" onAction="#add_tab" prefHeight="26.0" prefWidth="60.0" text="Tableau" />
+            <Button id="SaveButton" mnemonicParsing="false" onMouseClicked="#save" prefHeight="60.0" prefWidth="60.0" style="-fx-background-radius: 100;" stylesheets="@Fxml/Style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                <graphic>
+                    <ImageView id="Save" fitHeight="54.0" fitWidth="43.0" onMouseClicked="#save" pickOnBounds="true" preserveRatio="true">
+                        <Image url="@Fxml/Save.jpg" />
+                    </ImageView>
+                </graphic>
+            </Button>
         </AnchorPane>
     </SplitPane>
 </AnchorPane>

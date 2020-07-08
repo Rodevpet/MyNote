@@ -1,4 +1,4 @@
-package Notes;
+package edit;
 
 import java.io.File;
 import java.io.FileReader;

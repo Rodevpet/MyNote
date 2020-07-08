@@ -1,7 +1,12 @@
 package main;
 
-import Notes.Add_Controller;
+import edit.Add_Controller;
 import javafx.animation.RotateTransition;
+import javafx.beans.property.Property;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +16,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Transform;
 import javafx.scene.web.HTMLEditor;
 import javafx.util.Duration;
 
@@ -35,19 +41,12 @@ public class Home_Controller implements Initializable {
     HTMLEditor HtmlEditor;
 
     private String IdNote = "";
-    private File DirNote = new File("Notes/");
+    private File DirNote = new File("MyNote");
     private boolean ButtonMoreStatut = false;
 
-    /**
-     * Called to initialize a controller after its root element has been
-     * completely processed.
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  <tt>null</tt> if the location is not known.
-     * @param resources The resources used to localize the root object, or <tt>null</tt> if
-     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(DirNote.getAbsolutePath());
         for (File dur : DirNote.listFiles()) {
             if (dur.isDirectory()) {
                 File[] files = dur.listFiles((dir1, name) -> name.toLowerCase().endsWith(".fxml"));
@@ -84,31 +83,32 @@ public class Home_Controller implements Initializable {
         }
     }
 
-    public void add() throws IOException {
+    public void add() throws IOException, RuntimeException {
         TextInputDialog CreateNote = new TextInputDialog();
         CreateNote.setTitle("Créer une Note");
         CreateNote.setHeaderText("Veuillez saisir le nom de la note à créer : ");
         Optional<String> Name = CreateNote.showAndWait();
-        Name.get();
-        File directory = new File(DirNote + "/" + Name.get());
-        if (directory.exists()) {
-            Alert exist = new Alert(Alert.AlertType.ERROR);
-            exist.setTitle("Erreur");
-            exist.setHeaderText("Note déjà existante");
-            exist.setContentText("Erreur : la note que vous essayez de créer existe déjà.");
-            exist.showAndWait();
-        } else {
-            new Add_Controller(Name.get());
-            File file = new File(directory + "/" + Name.get() + ".fxml");
-            URL url = new File(file.getAbsolutePath()).toURI().toURL();
-            section.getChildren().add(FXMLLoader.load(url));
+        if (Name.isPresent()) {
+            File directory = new File(DirNote + "/" + Name.get());
+            if (directory.exists()) {
+                Alert exist = new Alert(Alert.AlertType.ERROR);
+                exist.setTitle("Erreur");
+                exist.setHeaderText("Note déjà existante");
+                exist.setContentText("Erreur : la note que vous essayez de créer existe déjà.");
+                exist.showAndWait();
+            } else {
+                new Add_Controller(Name.get());
+                File file = new File(directory + "/" + Name.get() + ".fxml");
+                URL url = new File(file.getAbsolutePath()).toURI().toURL();
+                section.getChildren().add(FXMLLoader.load(url));
+            }
         }
-        ButtonMoreRotate();
     }
 
     public void remove() {
         if (!IdNote.equals(null)) {
             File delete = new File(DirNote + "/" + IdNote);
+            System.out.println(delete.getAbsolutePath());
             for (File sup : Objects.requireNonNull(delete.listFiles())) {
                 sup.delete();
             }
@@ -122,25 +122,8 @@ public class Home_Controller implements Initializable {
         }
         section.getChildren().remove(IdNote);
         IdNote = "";
-        ButtonMoreRotate();
     }
 
-    public void ButtonMoreRotate() {
-        RotateTransition open = new RotateTransition();
-        open.setDuration(Duration.millis(100));
-        open.setNode(more);
-        if (!ButtonMoreStatut) {
-            open.setByAngle(45);
-            open.play();
-            MoreMenu.show();
-            ButtonMoreStatut = true;
-        } else {
-            open.setByAngle(-45);
-            open.play();
-            MoreMenu.hide();
-            ButtonMoreStatut = false;
-        }
-    }
     //TODO Voir comment ajouter directement un tableau entre les bonnes balise grâce à xml ou html
     public void add_tab(){
     //TODO Ajouter un tableau
@@ -165,4 +148,5 @@ public class Home_Controller implements Initializable {
     public void delete_column (){
         //TODO Supprimer une colone
     }
+
 }
