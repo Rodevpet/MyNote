@@ -1,6 +1,7 @@
 package main;
 
 import edit.Add_Controller;
+import edit.ResearchNote;
 import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.Property;
@@ -105,7 +106,9 @@ public class Home_Controller implements Initializable {
         }
     }
 
-    public void remove() {
+    public void remove() throws IOException {
+        ResearchNote.ferme();
+        HtmlEditor.setHtmlText("");
         if (current != null) {
             File delete = new File(DirNote + "/" + current.getText());
             System.out.println(delete.getAbsolutePath());
