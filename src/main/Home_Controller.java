@@ -8,12 +8,14 @@ import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.HTMLEditor;
@@ -32,22 +34,29 @@ public class Home_Controller implements Initializable {
     @FXML
     MenuButton MoreMenu;
     @FXML
-    AnchorPane main;
+    Pane main;
     @FXML
     Button more;
     @FXML
     HTMLEditor HtmlEditor;
     @FXML
     TitledPane Option;
+    @FXML
+    ScrollPane ScrollPane;
 
     private Button current;
-    private File DirNote = new File("MyNote");
+    private File DirNote = new File("Note/MyNote");
     private boolean ButtonMoreStatut = false;
 
+    @FXML
+    private void closeAction (ActionEvent evt){
+
+        System.exit(0);
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ScrollPane.setFitToWidth(true);
         section.layoutYProperty().bind((Bindings.when(Option.expandedProperty()).then(82).otherwise(25)));
-        System.out.println(DirNote.getAbsolutePath());
         for (File dur : DirNote.listFiles()) {
             if (dur.isDirectory()) {
                 File[] files = dur.listFiles((dir1, name) -> name.toLowerCase().endsWith(".fxml"));
@@ -107,11 +116,9 @@ public class Home_Controller implements Initializable {
     }
 
     public void remove() throws IOException {
-        ResearchNote.ferme();
         HtmlEditor.setHtmlText("");
         if (current != null) {
             File delete = new File(DirNote + "/" + current.getText());
-            System.out.println(delete.getAbsolutePath());
             for (File sup : Objects.requireNonNull(delete.listFiles())) {
                 sup.delete();
             }

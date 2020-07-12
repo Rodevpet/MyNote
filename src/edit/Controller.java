@@ -1,9 +1,8 @@
 package edit;
 
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
+import javafx.scene.input.MouseEvent;
 import main.Home_Controller;
 import main.Main;
 
@@ -13,13 +12,37 @@ public class Controller {
     @FXML
     Button button;
 
-    private Button history;
+    private static Button history;
+    private static boolean current = false;
     public void load() throws IOException {
-        button.setStyle("-fx-background-color: grey");
+        focus();
         Home_Controller load = (Home_Controller) Main.getLoader();
-        load.loadNote(button, ResearchNote.researchNote("MyNote/" + button.getText() + "/Note.txt"));
-        if (history != null)
-        history.setStyle("-fx-background-color : white");
+        load.loadNote(button, new ResearchNote().ResearchNote("Note/MyNote/" + button.getText() + "/Note.txt"));
+        nofocus();
+    }
+
+    public void onMouseEntered (){
+        if (current==false) {
+            button.setId("onMouseEntered");
+        }
+    }
+
+    public void  focus (){
+        current = true;
+        button.setId("Focus");
+    }
+
+    public void nofocus (){
+        if (history != button && history!=null) {
+            history.setId("NoFocus");
+            current = false;
+        }
         history = button;
+    }
+
+    public void onMouseExited() {
+        if (current==false){
+            button.setId("NoFocus");
+        }
     }
 }

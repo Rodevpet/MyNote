@@ -25,8 +25,6 @@ public class Main extends Application {
         Scene scene = new Scene(parent);
         frame.setScene(scene);
         //frame.setResizable(false);
-        frame.setMinWidth(820);
-        frame.setMinHeight(440);
         frame.setTitle("Simple Gestion Computer");
         frame.show();
     }
