@@ -1,4 +1,4 @@
-module Note {
+module MyNote {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;

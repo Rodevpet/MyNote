@@ -17,7 +17,7 @@ public class Controller {
     public void load() throws IOException {
         focus();
         Home_Controller load = (Home_Controller) Main.getLoader();
-        load.loadNote(button, new ResearchNote().ResearchNote("Note/MyNote/" + button.getText() + "/Note.txt"));
+        load.loadNote(button, new ResearchNote().ResearchNote("Note/" + button.getText() + "/Note.txt"));
         nofocus();
     }
 

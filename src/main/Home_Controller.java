@@ -36,7 +36,7 @@ public class Home_Controller implements Initializable {
     Pane List;
 
     private Button current;
-    private final File DirNote = new File("Note/MyNote");
+    private final File DirNote = new File("Note");
 
     @FXML
     private void closeAction (ActionEvent evt){
@@ -60,7 +60,6 @@ public class Home_Controller implements Initializable {
                 }
             }
         }
-        System.out.println(main.getHeight());
         ScrollPane.setFitToWidth(true);
         main.heightProperty().addListener((observableValue, number, t1) -> {
             ScrollPane.setMinHeight(main.getHeight());

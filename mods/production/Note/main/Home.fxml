@@ -12,12 +12,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-
 <Pane fx:id="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Home_Controller">
    <children>
       <ScrollPane fx:id="ScrollPane" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="202.0">
          <content>
-            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="398.0" prefWidth="210.0">
+            <Pane fx:id="List" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="398.0" prefWidth="210.0">
                <children>
                      <VBox fx:id="section" layoutY="25.0" maxWidth="210.0" prefHeight="373.0" prefWidth="198.0" style="-fx-background-color: #383838;" />
                   <TitledPane id="Option" fx:id="Option" accessibleRole="PARENT" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="198.0">

@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Add_Controller {
 
     public Add_Controller(String Name) throws IOException {
-        File directory = new File("Note/MyNote/" + Name);
+        File directory = new File("Note/" + Name);
         directory.mkdir();
         String Fxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "\n" +
