@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Home_Controller implements Initializable {
@@ -36,7 +37,9 @@ public class Home_Controller implements Initializable {
     Pane List;
 
     private Button current;
-    private final File DirNote = new File("Note");
+    private Properties info = System.getProperties();
+    private String user = info.getProperty("user.name");
+    private final File DirNote = new File("/Users/"+user+"/Documents/Note");
 
     @FXML
     private void closeAction (ActionEvent evt){

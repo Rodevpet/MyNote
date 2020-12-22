@@ -3,11 +3,14 @@ package edit;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Properties;
 
 public class Add_Controller {
 
     public Add_Controller(String Name) throws IOException {
-        File directory = new File("Note/" + Name);
+        Properties info = System.getProperties();
+        String user = info.getProperty("user.name");
+        File directory = new File("/Users/"+user+"/Documents/Note/" + Name);
         directory.mkdir();
         String Fxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "\n" +

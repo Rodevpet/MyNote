@@ -27,7 +27,7 @@ public class Main extends Application {
         frame.setScene(scene);
         //frame.setResizable(false);
         frame.setMaximized(true);
-        frame.setTitle("Simple Gestion Computer");
+        frame.setTitle("My Note");
         frame.show();
     }
 }
