@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -15,6 +16,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Properties;
@@ -37,18 +41,25 @@ public class Home_Controller implements Initializable {
     Pane List;
 
     private Button current;
-    private Properties info = System.getProperties();
-    private String user = info.getProperty("user.name");
-    private final File DirNote = new File("/Users/"+user+"/Documents/Note");
+    private final Properties info = System.getProperties();
+    private final String user = info.getProperty("user.name");
+    private final File DirNote = new File("/Users/"+user+"/.Note/");
 
     @FXML
     private void closeAction (ActionEvent evt){
-
         System.exit(0);
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         section.layoutYProperty().bind((Bindings.when(Option.expandedProperty()).then(82).otherwise(25)));
+        if (!DirNote.exists()){
+            Path path = Paths.get(DirNote.getAbsolutePath());
+            try {
+                Files.createDirectory(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         for (File dur : Objects.requireNonNull(DirNote.listFiles())) {
             if (dur.isDirectory()) {
                 File[] files = dur.listFiles((dir1, name) -> name.toLowerCase().endsWith(".fxml"));
@@ -62,6 +73,10 @@ public class Home_Controller implements Initializable {
                     }
                 }
             }
+        }
+        for (Node button : section.getChildren()){
+            Button n = (Button) button;
+            n.getStylesheets().add("style.css");
         }
         ScrollPane.setFitToWidth(true);
         main.heightProperty().addListener((observableValue, number, t1) -> {

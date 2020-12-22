@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    private static FXMLLoader run = new FXMLLoader(Main.class.getResource("Home.fxml"));
+    private static final FXMLLoader run = new FXMLLoader(Main.class.getResource("Home.fxml"));
 
     public static void main(String[] args) {
         launch(args);
