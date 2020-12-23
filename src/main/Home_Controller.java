@@ -19,6 +19,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.spec.RSAOtherPrimeInfo;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Properties;
@@ -54,11 +55,6 @@ public class Home_Controller implements Initializable {
         section.layoutYProperty().bind((Bindings.when(Option.expandedProperty()).then(82).otherwise(25)));
         if (!DirNote.exists()){
             Path path = Paths.get(DirNote.getAbsolutePath());
-            try {
-                Files.createDirectory(path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
         for (File dur : Objects.requireNonNull(DirNote.listFiles())) {
             if (dur.isDirectory()) {
@@ -73,10 +69,6 @@ public class Home_Controller implements Initializable {
                     }
                 }
             }
-        }
-        for (Node button : section.getChildren()){
-            Button n = (Button) button;
-            n.getStylesheets().add("style.css");
         }
         ScrollPane.setFitToWidth(true);
         main.heightProperty().addListener((observableValue, number, t1) -> {
