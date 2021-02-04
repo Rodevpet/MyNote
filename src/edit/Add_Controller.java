@@ -1,20 +1,18 @@
 package edit;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Properties;
+import java.net.URL;
 
 public class Add_Controller {
-
+private File note;
     public Add_Controller(String Name) throws IOException {
-        Properties info = System.getProperties();
-        String user = info.getProperty("user.name");
-        File directory = new File("/Users/"+user+"/.Note/" + Name);
+        File directory = new File(System.getProperty("user.home")+"/.note/"+Name);
         directory.mkdir();
-        System.out.println(new File ("./").getCanonicalPath());
         String Fxml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "\n" +
                 "<?import javafx.scene.control.Button?>\n" +
@@ -25,7 +23,11 @@ public class Add_Controller {
         FileWriter containFxml = new FileWriter(directory + "/" + Name + ".fxml");
         containFxml.write(Fxml);
         containFxml.close();
-        File note = new File(directory.getAbsolutePath() + "/Note.txt");
+        note = new File(directory.getAbsolutePath() + "/Note.txt");
         note.createNewFile();
+    }
+
+    public File getNote (){
+        return note;
     }
 }
