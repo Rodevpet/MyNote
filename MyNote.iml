@@ -10,7 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="sourceFolder" forTests="false" />x
+    <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="JavaFx" level="project" />
   </component>
 </module>
