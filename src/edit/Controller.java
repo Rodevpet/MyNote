@@ -1,15 +1,11 @@
 package edit;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import main.Home_Controller;
+import controller.Node;
 import main.Main;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Properties;
 
 public class Controller {
     @FXML
@@ -18,7 +14,7 @@ public class Controller {
     private static boolean New;
     public void load() throws IOException {
         focus();
-        Home_Controller load = (Home_Controller) Main.getLoader();
+        Node load = (Node) Main.getLoader();
         load.loadNote(button, new ResearchNote().ResearchNote(System.getProperty("user.home")+"/.Note/"+button.getText() + "/Note.txt"));
         nofocus();
     }
