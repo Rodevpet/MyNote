@@ -3,10 +3,12 @@ module MyNote {
     requires javafx.controls;
     requires javafx.web;
 
-    opens main to javafx.fxml;
-    opens edit to javafx.fxml;
+    opens view to javafx.fxml;
+    opens model to javafx.fxml;
     opens controller to javafx.fxml;
-    exports edit;
-    exports main;
+    opens resources to javafx.fxml;
+    exports model;
+    exports view;
     exports controller;
+    exports resources;
 }

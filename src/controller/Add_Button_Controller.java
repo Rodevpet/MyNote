@@ -1,35 +1,45 @@
 package controller;
 
-import edit.Add_Controller;
-import edit.Controller;
+import model.Add_Controller;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.MouseEvent;
+import model.Join_Model;
+import model.Path_Note;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
 
-public class Add_Button_Controller implements EventHandler <Event>, Join_Controller{
+public class Add_Button_Controller implements EventHandler <Event>, Join_Controller, Join_Model {
     private Node node;
-    public void setController (Node node){
-        this.node = node;
+    private Path_Note path_note;
+    @Override
+    public void handle(Event event) {
+        if (event.getEventType() == MouseEvent.MOUSE_CLICKED){
+            Add_Note();
+        }
     }
 
     @Override
-    public void handle(Event event) {
+    public void Join_Controller(Node node) throws IOException {
+        this.node = node;
+    }
+
+    private void Add_Note (){
         TextInputDialog CreateNote = new TextInputDialog();
         CreateNote.setTitle("Créer une Note");
         CreateNote.setHeaderText("Veuillez saisir le nom de la note à créer : ");
         Optional<String> Name = CreateNote.showAndWait();
         URL url = null;
         if (Name.isPresent()) {
-            System.out.println(node.getDirNote().getAbsolutePath() + "/" + Name.get());
-            File directory = new File(node.getDirNote().getAbsolutePath()+ "/" + Name.get());
+            File directory = new File(path_note.getDirNote().getAbsolutePath()+ "/" + Name.get());
             if (directory.exists()) {
                 Alert exist = new Alert(Alert.AlertType.ERROR);
                 exist.setTitle("Erreur");
@@ -55,10 +65,10 @@ public class Add_Button_Controller implements EventHandler <Event>, Join_Control
                     e.printStackTrace();
                 }
                 node.getHtml_Editor().setHtmlText("");
-                Controller.setHistory((Button) node.getSection().getChildren().get(node.getIndex()));
-                node.getSection().getChildren().get(node.getIndex()).setId("Focus");
+                //Button_Note_Controller.setHistory((Button) node.getSection().getChildren().get(node.getIndex()));
+                node.getSection().getChildren().get(node.getIndex()).setId("onMouseClicked");
                 if (node.getCurrent()!=null) {
-                    node.getSection().getChildren().get(node.getIndex()).setId("NoFocus");
+                    node.getCurrent().setId("onMouseExited");
                 }
                 node.setCurrent((Button) node.getSection().getChildren().get(node.getIndex()));
             }
@@ -66,7 +76,7 @@ public class Add_Button_Controller implements EventHandler <Event>, Join_Control
     }
 
     @Override
-    public void Join_Controller(Node node) throws IOException {
-        this.node = node;
+    public void Join_Path_Note(Path_Note path_note) {
+        this.path_note = path_note;
     }
 }
