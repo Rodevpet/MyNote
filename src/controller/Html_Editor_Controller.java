@@ -29,13 +29,18 @@ public class Html_Editor_Controller implements EventHandler <Event>, Join_Contro
                     shortcut n = new shortcut(ch);
                     String v = n.getShortcut();
                     String f = n.getText_entered();
-                    String text = node.getHtml_Editor().getHtmlText();
-                    node.getHtml_Editor().setHtmlText(text.replace(f, v));
+                    String text = events_manager.getHtml_Editor().getHtmlText();
+                    events_manager.getHtml_Editor().setHtmlText(text.replace(f, v));
                     ch.clear();
-                    node.getHtml_Editor().requestFocus();
-                    node.getHtml_Editor().getCursor();
+                    events_manager.getHtml_Editor().requestFocus();
+                    events_manager.getHtml_Editor().getCursor();
                 } else {
                     ch.add(keyEvent.getText());
                 }
+    }
+
+    @Override
+    public void Join_Manager(Events_Manager events_manager) throws IOException {
+        this.events_manager = events_manager;
     }
 }

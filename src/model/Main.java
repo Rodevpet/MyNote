@@ -1,5 +1,6 @@
 package model;
 
+import controller.Events_Manager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,12 +12,12 @@ import java.io.IOException;
 public class Main extends Application {
     private static final FXMLLoader run = new FXMLLoader(Main.class.getResource("/view/Home.fxml"));
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch(args);
         System.out.close();
     }
 
-    public static Object getLoader() {
+    public static Events_Manager getLoader() {
         return run.getController();
     }
 

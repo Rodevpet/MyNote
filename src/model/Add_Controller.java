@@ -1,12 +1,8 @@
 package model;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
 
 public class Add_Controller {
 private File note;

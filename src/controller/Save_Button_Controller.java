@@ -27,16 +27,12 @@ public class Save_Button_Controller implements EventHandler <Event>, Join_Contro
         }
     }
 
-    @Override
-    public void Join_Controller(Node node) throws IOException {
-        this.node = node;
-    }
 
     private void save() throws IOException {
             if (node.getCurrent() != null) {
                 File sav = new File(path_note.getDirNote().getAbsolutePath() + "/" + node.getCurrent().getText() + "/Note.txt");
                 FileWriter saved = new FileWriter(sav);
-                saved.write(node.getHtml_Editor().getHtmlText());
+                saved.write(events_manager.getHtml_Editor().getHtmlText());
                 saved.close();
                 Alert Confirm_Saved = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.OK);
                 Confirm_Saved.setTitle("");
@@ -54,5 +50,10 @@ public class Save_Button_Controller implements EventHandler <Event>, Join_Contro
     @Override
     public void Join_Path_Note(Path_Note path_note) {
         this.path_note = path_note;
+    }
+
+    @Override
+    public void Join_Manager(Events_Manager events_manager) throws IOException {
+        this.events_manager = events_manager;
     }
 }
