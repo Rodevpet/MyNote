@@ -4,12 +4,12 @@
      -fx-text-fill : white
  }
 
- #onMouseClicked{
+ #onMouseEntered {
      -fx-background-radius : 0;
      -fx-background-color:#363636;
      -fx-text-fill : white
  }
- #onMouseEntered {
+ #onMouseClicked{
      -fx-background-radius : 0;
      -fx-background-color:#747474;
      -fx-text-fill : white

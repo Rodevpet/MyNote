@@ -1,7 +1,6 @@
 package model;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -9,28 +8,18 @@ public class ResearchNote {
     private File NoteLoading;
     private FileReader recovery;
 
-    public String ResearchNote(String path) {
+    public ResearchNote() {
+    }
+
+    public String ResearchNote(String path) throws IOException {
         NoteLoading = new File (path);
-        try {
-            recovery = new FileReader(NoteLoading);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        recovery = new FileReader(NoteLoading);
         int i = 0;
         String r = "";
-        while (true) {
-            try {
-                if (!((i = recovery.read()) != -1)) break;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        while ((i = recovery.read()) != -1) {
             r += (char) i;
         }
-        try {
-            recovery.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        recovery.close();
         return r;
     }
 }

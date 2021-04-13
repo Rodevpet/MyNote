@@ -7,5 +7,4 @@ module MyNote {
     opens controller to javafx.fxml;
     exports model;
     exports controller;
-    exports resources;
 }
