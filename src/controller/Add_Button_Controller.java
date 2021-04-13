@@ -7,6 +7,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
+import view.Enter_Name_Note;
+import view.Note_Exist;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,22 +27,14 @@ public class Add_Button_Controller implements EventHandler <Event>, Join {
       if (event.getEventType()== MouseEvent.MOUSE_CLICKED){ Add_Note(); }
     }
     private void Add_Note (){
-        TextInputDialog CreateNote = new TextInputDialog();
-        CreateNote.setTitle("Créer une Note");
-        CreateNote.setHeaderText("Veuillez saisir le nom de la note à créer : ");
-        Optional<String> Name = CreateNote.showAndWait();
+        Optional<String> Name = new Enter_Name_Note().Enter_Name_Note();
         URL url = null;
         if (Name.isPresent()) {
             System.out.println(events_manager.getDirNote().getAbsolutePath() + "/" + Name.get());
             File directory = new File(events_manager.getDirNote().getAbsolutePath()+ "/" + Name.get());
             if (directory.exists()) {
-                Alert exist = new Alert(Alert.AlertType.ERROR);
-                exist.setTitle("Erreur");
-                exist.setHeaderText("Note déjà existante");
-                exist.setContentText("Erreur : la note que vous essayez de créer existe déjà.");
-                exist.showAndWait();
+                new Note_Exist();
             } else {
-                events_manager.setIndex(0);
                 try {
                     Add_Controller New = new Add_Controller(Name.get());
                 } catch (IOException e) {
@@ -53,7 +47,7 @@ public class Add_Button_Controller implements EventHandler <Event>, Join {
                     e.printStackTrace();
                 }
                 try {
-                    events_manager.getSection().getChildren().add(events_manager.getIndex(), FXMLLoader.load(url));
+                    events_manager.getSection().getChildren().add(0, FXMLLoader.load(url));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

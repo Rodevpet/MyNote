@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Events_Manager extends Current_Button_Manager implements Initializable{
+public class Events_Manager implements Initializable{
     @FXML
     VBox section;
     @FXML
@@ -36,10 +36,7 @@ public class Events_Manager extends Current_Button_Manager implements Initializa
     private ScrollPane ScrollPane;
     @FXML
     private Pane List;
-
-    @FXML
-    private Button Button_Note;
-
+    private Button Current_Button;
     private final Add_Button_Controller ABC = new Add_Button_Controller();
     private final Remove_Button_Controller RBC = new Remove_Button_Controller();
     private final Save_Button_Controller SBC = new Save_Button_Controller();
@@ -95,20 +92,17 @@ public class Events_Manager extends Current_Button_Manager implements Initializa
     public File getDirNote (){
         return DirNote;
     }
-    public int getIndex (){
-        return index;
-    }
-    public void setIndex(int index){
-        this.index=index;
-    }
     public VBox getSection (){
         return section;
     }
 
-    public Button getButton_Note (){ return Button_Note; }
-    public void remove() {
-        RBC.remove();
+    public Button getCurrent_Button() {
+        return Current_Button;
     }
+    public void setCurrent_Button(Button Current_Button){
+        this.Current_Button = Current_Button;
+    }
+
 
 
 }

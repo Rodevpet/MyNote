@@ -37,11 +37,13 @@ public class Note_Button_Controller implements EventHandler, Initializable{
     }
 
     public void onMouseExited(){
-        if (Button_Note.getId().equals("onMouseClicked"))
+        if (!Button_Note.getId().equals("onMouseClicked"))
             Button_Note.setId("onMouseExited");
     }
 
     public void onMouseClicked(){
+        if (events_manager.getCurrent_Button()!=null)
+            events_manager.getCurrent_Button().setId("onMouseExited");
         if (Button_Note != null)
             Button_Note.setId("onMouseExited");
         Button_Note.setId("onMouseClicked");
