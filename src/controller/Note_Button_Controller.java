@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 
 public class Note_Button_Controller implements EventHandler, Initializable{
     private final Path_Note path_note = new Path_Note();
-    @FXML
     private Button Button_Note;
 
     private static Events_Manager events_manager;
@@ -26,6 +25,7 @@ public class Note_Button_Controller implements EventHandler, Initializable{
 
     @Override
     public void handle(Event event) {
+        Button_Note = (Button) event.getSource();
         if (event.getEventType()== MouseEvent.MOUSE_ENTERED){onMouseEntered();}
         if (event.getEventType()== MouseEvent.MOUSE_CLICKED){onMouseClicked();}
         if (event.getEventType()== MouseEvent.MOUSE_EXITED){onMouseExited();}
@@ -48,7 +48,7 @@ public class Note_Button_Controller implements EventHandler, Initializable{
             Button_Note.setId("onMouseExited");
         Button_Note.setId("onMouseClicked");
         try {
-            events_manager.getHtml_Editor().setHtmlText(new ResearchNote().ResearchNote(path_note.getPath_Note()+"/"+Button_Note.getText() + "/Note.txt"));
+            events_manager.getHtml_Editor().setHtmlText(new ResearchNote().ResearchNote(path_note.getPath_Note()+"/"+Button_Note.getText()));
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,6 +1,8 @@
 package controller;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import model.Button_Note;
 import model.Path_Note;
 
 import java.io.File;
@@ -12,24 +14,13 @@ public class Three_Controller implements Join {
     private Events_Manager events_manager;
     private Path_Note path_note = new Path_Note();
     public void Init (){
-        if (!path_note.getPath_Note().exists()){
-            path_note.getPath_Note().mkdir();
-        }
-        for (File dur : Objects.requireNonNull(path_note.getPath_Note().listFiles())) {
-            if (dur.isDirectory()) {
-                File[] files = dur.listFiles((dir1, name) -> name.toLowerCase().endsWith(".fxml"));
+        System.out.println(path_note.getPath_Note());
+                File[] files = path_note.getPath_Note().listFiles((dir1, name) -> name.toLowerCase().endsWith(".txt"));
                 assert files != null;
                 for (File file : files) {
-                    try {
-                        URL url = new File(file.getAbsolutePath()).toURI().toURL();
-                        events_manager.getSection().getChildren().add(FXMLLoader.load(url));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    events_manager.getSection().getChildren().add(new Button_Note(file.getName()));
                 }
-            }
         }
-    }
 
     @Override
     public void Join_Manager(Events_Manager events_manager) throws IOException {
