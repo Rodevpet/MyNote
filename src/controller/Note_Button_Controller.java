@@ -56,7 +56,7 @@ public class Note_Button_Controller implements EventHandler, Initializable{
         events_manager.setCurrent_Button(Button_Note);
     }
 
-    public void setEvents_manager(Events_Manager events_manager) {
+    public static void setEvents_manager(Events_Manager events_manager) {
         Note_Button_Controller.events_manager = events_manager;
     }
 }
