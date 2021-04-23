@@ -18,7 +18,7 @@ public class Three_Controller implements Join {
                 File[] files = path_note.getPath_Note().listFiles((dir1, name) -> name.toLowerCase().endsWith(".txt"));
                 assert files != null;
                 for (File file : files) {
-                    events_manager.getSection().getChildren().add(new Button_Note(file.getName()));
+                    events_manager.getSection().getChildren().add(new Button_Note(file.getName(),events_manager));
                 }
         }
 
