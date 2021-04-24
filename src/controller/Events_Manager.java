@@ -5,12 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.web.HTMLEditor;
+import model.Book_Note;
+import model.Button_Note;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class Events_Manager implements Initializable{
     @FXML
-    VBox section;
+    TreeView Tree_view;
     @FXML
     private Pane main;
     @FXML
@@ -36,7 +35,8 @@ public class Events_Manager implements Initializable{
     private ScrollPane ScrollPane;
     @FXML
     private Pane List;
-    private Button Current_Button;
+    private Button_Note Current_Note;
+    private Book_Note Current_Book;
     private final Add_Button_Controller ABC = new Add_Button_Controller();
     private final Remove_Button_Controller RBC = new Remove_Button_Controller();
     private final Save_Button_Controller SBC = new Save_Button_Controller();
@@ -46,6 +46,7 @@ public class Events_Manager implements Initializable{
     private int i = 0;
     private Button current;
     private File DirNote = new File(System.getProperty("user.home")+"/.note");
+    private Book_Note section = new Book_Note("root",this,DirNote);
     protected int index = 0;
 
     public Events_Manager() {
@@ -62,13 +63,13 @@ public class Events_Manager implements Initializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        section.layoutYProperty().bind((Bindings.when(Option.expandedProperty()).then(82).otherwise(25)));
-
+        Tree_view.layoutYProperty().bind((Bindings.when(Option.expandedProperty()).then(82).otherwise(25)));
+        Tree_view.setRoot(section);
         ScrollPane.setFitToWidth(true);
         main.heightProperty().addListener((observableValue, number, t1) -> {
             ScrollPane.setMinHeight(main.getHeight());
             List.setMinHeight(main.getHeight());
-            section.setMinHeight(main.getHeight());
+            Tree_view.setMinHeight(main.getHeight());
             Html_Editor.setMinHeight(main.getHeight());
         });
         main.widthProperty().addListener((observableValue, number, t1) -> Html_Editor.setMinWidth(main.getWidth() - 202));
@@ -92,17 +93,14 @@ public class Events_Manager implements Initializable{
     public File getDirNote (){
         return DirNote;
     }
-    public VBox getSection (){
-        return section;
+    public Book_Note getSection (){ return section; }
+
+    public Button_Note getCurrent_Note() { return Current_Note; }
+    public void setCurrent_Note(Button_Note Current_Button){
+        this.Current_Note = Current_Button;
     }
 
-    public Button getCurrent_Button() {
-        return Current_Button;
-    }
-    public void setCurrent_Button(Button Current_Button){
-        this.Current_Button = Current_Button;
-    }
-
-
+    public Book_Note getCurrent_Book (){return Current_Book;}
+    public void setCurrent_Book (Book_Note book_note){Current_Book=book_note;}
 
 }

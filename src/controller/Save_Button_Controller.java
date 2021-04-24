@@ -27,8 +27,8 @@ public class Save_Button_Controller implements EventHandler <Event>, Join {
 
     private void save() throws IOException {
         try {
-            if (events_manager.getCurrent_Button() != null) {
-                File sav = new File(events_manager.getDirNote().getAbsolutePath() + "/" + events_manager.getCurrent_Button().getText() + "/Note.txt");
+            if (events_manager.getCurrent_Note() != null) {
+                File sav = new File(events_manager.getDirNote().getAbsolutePath() + "/" + events_manager.getCurrent_Note().getText());
                 FileWriter saved = new FileWriter(sav);
                 saved.write(events_manager.getHtml_Editor().getHtmlText());
                 saved.close();
