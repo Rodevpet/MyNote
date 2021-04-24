@@ -19,7 +19,7 @@ public class Remove_Button_Controller implements EventHandler<Event>, Join {
                 sup.delete();
             }
             delete.delete();
-            events_manager.getSection().getChildren().remove(events_manager.getCurrent_Note());
+            //events_manager.getSection().getChildren().remove(events_manager.getCurrent_Note());
             events_manager.setCurrent_Note(null);
         } else {
             new Warning_Note_Not_Found();

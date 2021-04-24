@@ -1,46 +1,41 @@
 package controller;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
-import model.Book_Note;
+import model.Note_Book;
 import model.Button_Note;
 import model.Note_Parent_Child;
 import model.Path_Note;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Objects;
 
 public class Three_Controller implements Join {
     private Events_Manager events_manager;
-    private Book_Note Node;
+    private Note_Book Node;
+    private boolean root = true;
     private Path_Note path_note = new Path_Note();
     private ArrayList <Note_Parent_Child> Tree = new ArrayList<Note_Parent_Child>();
     public void Init (){
-        listeRepertoire(new Path_Note().getPath_Note(),events_manager.getSection());
-        /*System.err.println("Parent | Child");
-        for (int i=0; i!=Tree.size();i++){
-            if (i==1){
-                events_manager.getTree_view().setRoot(new Book_Note(Tree.get(i).getParent(),events_manager,Tree.get(i).getPath()));
-            }
-            System.err.println(Tree.get(i).getParent()+" | "+Tree.get(i).getChild());
-        }*/
+        listeRepertoire(new Path_Note().getPath_Note(),null);
         }
 
     @Override
     public void Join_Manager(Events_Manager events_manager) throws IOException {
         this.events_manager = events_manager;
     }
-    public void listeRepertoire ( File repertoire, Book_Note book_note ) {
+    public void listeRepertoire ( File repertoire, Note_Book noteBook) {
         if ( repertoire.isDirectory ( ) ) {
-            Book_Note b = new Book_Note(repertoire.getName(),events_manager,repertoire);
-            book_note.getChildren().add(b);
-            book_note = b;
+            Note_Book b = null;
+            if (root==true){
+                b = new Note_Book("/",events_manager,repertoire);
+                events_manager.getTree_view().setRoot(b);
+                root = false;
+            }else{
+                b = new Note_Book(repertoire.getName(),events_manager,repertoire);
+                noteBook.getChildren().add(b);
+            }
+            noteBook = b;
             //Tree.add(new Note_Parent_Child(repertoire.getParentFile().getName(),repertoire.getName(),repertoire));
             File[] list = repertoire.listFiles();
             if (list != null){
@@ -52,7 +47,7 @@ public class Three_Controller implements Join {
                 System.err.println(repertoire + " : Erreur de lecture.");
             }
         }else{
-            book_note.getChildren().add(new TreeItem(new Button_Note(repertoire.getName(),events_manager,repertoire)));
+            noteBook.getChildren().add(new TreeItem(new Button_Note(repertoire.getName(),events_manager,repertoire)));
         }
     }
 }

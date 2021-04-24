@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.HTMLEditor;
-import model.Book_Note;
+import model.Note_Book;
 import model.Button_Note;
 
 import java.io.File;
@@ -36,7 +36,7 @@ public class Events_Manager implements Initializable{
     @FXML
     private Pane List;
     private Button_Note Current_Note;
-    private Book_Note Current_Book;
+    private Note_Book Current_Book;
     private final Add_Button_Controller ABC = new Add_Button_Controller();
     private final Remove_Button_Controller RBC = new Remove_Button_Controller();
     private final Save_Button_Controller SBC = new Save_Button_Controller();
@@ -46,7 +46,6 @@ public class Events_Manager implements Initializable{
     private int i = 0;
     private Button current;
     private File DirNote = new File(System.getProperty("user.home")+"/.note");
-    private Book_Note section = new Book_Note("root",this,DirNote);
     protected int index = 0;
 
     public Events_Manager() {
@@ -60,11 +59,11 @@ public class Events_Manager implements Initializable{
         try {
             Init_Controller();
             TC.Init();
+            Tree_view.getRoot().setExpanded(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
         Tree_view.layoutYProperty().bind((Bindings.when(Option.expandedProperty()).then(82).otherwise(25)));
-        Tree_view.setRoot(section);
         ScrollPane.setFitToWidth(true);
         main.heightProperty().addListener((observableValue, number, t1) -> {
             ScrollPane.setMinHeight(main.getHeight());
@@ -93,14 +92,14 @@ public class Events_Manager implements Initializable{
     public File getDirNote (){
         return DirNote;
     }
-    public Book_Note getSection (){ return section; }
+    public TreeView getTree_view (){ return Tree_view; }
 
     public Button_Note getCurrent_Note() { return Current_Note; }
     public void setCurrent_Note(Button_Note Current_Button){
         this.Current_Note = Current_Button;
     }
 
-    public Book_Note getCurrent_Book (){return Current_Book;}
-    public void setCurrent_Book (Book_Note book_note){Current_Book=book_note;}
+    public Note_Book getCurrent_Book (){return Current_Book;}
+    public void setCurrent_Book (Note_Book _noteBook){Current_Book= _noteBook;}
 
 }
