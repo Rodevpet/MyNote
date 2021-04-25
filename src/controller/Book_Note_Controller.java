@@ -7,15 +7,16 @@ import model.Note_Book;
 
 public class Book_Note_Controller implements EventHandler {
     private Events_Manager events_manager;
-    private Note_Book _noteBook;
+    private Note_Book noteBook;
     @Override
     public void handle(Event event) {
-        _noteBook = (Note_Book) event.getSource();
+        System.err.println(event.getSource());
+        //noteBook = (Note_Book) event.getSource();
         if (event.getEventType()== MouseEvent.MOUSE_CLICKED){onMouseClicked();}
     }
 
     private void onMouseClicked() {
-        events_manager.setCurrent_Book(_noteBook);
+        events_manager.setCurrent_Book(noteBook);
     }
 
     public void setEvents_manager (Events_Manager events_manager){

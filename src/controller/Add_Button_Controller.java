@@ -38,8 +38,8 @@ public class Add_Button_Controller implements EventHandler <Event>, Join {
                 new Note_Exist();
             } else {
                 directory.createNewFile();
-                    System.err.println(events_manager.getCurrent_Book());
-                    events_manager.getCurrent_Book().getChildren().add(new TreeItem(new Button_Note(Name.get(), events_manager,new File(events_manager.getCurrent_Note().getPath_Note().getParent()))));
+                    //System.err.println(events_manager.getCurrent_Book());
+                    //events_manager.getCurrent_Book().getChildren().add(new TreeItem(new Button_Note(Name.get(), events_manager,new File(events_manager.getCurrent_Note().getPath_Note().getParent()))));
                 events_manager.getHtml_Editor().setHtmlText("");
             }
         }

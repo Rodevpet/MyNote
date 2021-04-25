@@ -100,6 +100,6 @@ public class Events_Manager implements Initializable{
     }
 
     public Note_Book getCurrent_Book (){return Current_Book;}
-    public void setCurrent_Book (Note_Book _noteBook){Current_Book= _noteBook;}
+    public void setCurrent_Book (Note_Book noteBook){this.Current_Book= noteBook;}
 
 }

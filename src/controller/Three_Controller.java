@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class Three_Controller implements Join {
     private Events_Manager events_manager;
-    private Note_Book Node;
     private boolean root = true;
     private Path_Note path_note = new Path_Note();
     private ArrayList <Note_Parent_Child> Tree = new ArrayList<Note_Parent_Child>();
