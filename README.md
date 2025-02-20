@@ -1,3 +1,3 @@
 # MyNote
-This is application for make note
-She require JavaFx library
+This is application to take some note
+It require JavaFx library
